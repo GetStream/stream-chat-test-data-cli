@@ -1,0 +1,24 @@
+{
+  "name": "stream-chat-data-cli",
+  "version": "1.0.0",
+  "description": "cli tool to generate demo data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create-user": "node ./src/create-user.js",
+    "create-channels": "node ./src/create-channels.js",
+    "update-channel": "node ./src/update-channel.js",
+    "hide-channel": "node ./src/hide-channel.js",
+    "delete-channel": "node ./src/delete-channel.js",
+    "add-member": "node ./src/add-member.js",
+    "add-moderator": "node ./src/add-moderator.js",
+    "remove-member": "node ./src/remove-member.js",
+    "update-app-settings": "node ./src/update-app-settings.js"
+  },
+  "dependencies": {
+    "cli-progress": "^3.4.0",
+    "stream-chat": "^"
+  },
+  "author": "",
+  "license": "ISC"
+}

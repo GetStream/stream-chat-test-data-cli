@@ -1,0 +1,43 @@
+Arguments: 
+  /usr/local/Cellar/node/13.3.0/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js run create-user
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  13.3.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/vishalnarkhede/projects/stream-chat-data-cli/package.json: Unexpected token } in JSON at position 258
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "stream-chat-data-cli",
+    "version": "1.0.0",
+    "description": "cli tool to generate demo data",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "create-user": "node ./create-user.js",
+      ""
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
