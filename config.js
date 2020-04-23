@@ -1,6 +1,8 @@
 const config = {
     API_KEY: '',
     SECRET: '',
+    /** Custom field for channels */
+    EXAMPLE: 'test-data-0',
 
     /**
     * Group channels will be created with these users (id) as members
@@ -35,8 +37,6 @@ const config = {
     /** So number of attachments will vary between 1 and MAX_NUMBER_OF_ATTACHMENTS_PER_MESSAGE */
     MAX_NUMBER_OF_ATTACHMENTS_PER_MESSAGE: 6,
 
-    /** Custom field for channels */
-    EXAMPLE: 'testing',
 
     /** Following reactions will be randomly added to messages. */
     reactions: [
@@ -52,8 +52,9 @@ const config = {
     urls: [
         'https://www.youtube.com/watch?v=MhCEdIqFCck',
         'https://getstream.io',
-        'https://vimeo.com/65436011',
-        'https://www.youtube.com/watch?v=ciNHn38EyRc'
+        'https://blog.bitsrc.io/code-principles-every-programmer-should-follow-e01bfe976daf?source=extreme_main_feed---------14-73--------------------243e37ba_f08d_481f_b151_e4eec7ca25e9--6',
+        'https://www.youtube.com/watch?v=ciNHn38EyRc',
+        'https://blog.feathersjs.com/design-patterns-for-modern-web-apis-1f046635215?source=extreme_main_feed---------32-50----------55f1c20aba7a----------243e37ba_f08d_481f_b151_e4eec7ca25e9--3&gi=b68587c1daa4'
     ],
     language: 'en',
 }

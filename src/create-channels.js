@@ -4,6 +4,10 @@ const {config} = require('../config');
 const API_KEY = config.API_KEY;
 const SECRET = config.SECRET;
 
+if (!API_KEY || !SECRET) {
+    throw Error('Please add API_KEY and SECRET to config.js');
+}
+
 /**
  * Group channels will be created with these users as members
  * First user of this user will be the creator of channel (since we are using server token for generating channels).
@@ -74,16 +78,16 @@ async function createUsers () {
     return new Promise(resolve => {
         users.forEach(async userID => {
             const token = client.createToken(userID);
-            const randomSeed = getRandomInt(1, 1000);
+            const randomSeed = getRandomInt(1, 50);
             const newUser = {
                 id: userID,
                 name: userID.charAt(0).toUpperCase() + userID.slice(1),
-                image: `https://picsum.photos/seed/${randomSeed}/100/100`
+                image: `https://randomuser.me/api/portraits/thumb/men/${randomSeed}.jpg`
             }
             
             await client.updateUsers([newUser]).then(user => {
-                console.log(`Token for ${userID} is ${token}`);
-                console.log(user)
+                console.log(`Created user - ${userID} with token - ${token}`);
+                console.log(newUser)
             });
         })
         resolve();
@@ -171,7 +175,7 @@ async function createOneOnOneConversations () {
                 }
                 bar1.stop();
                 } catch (error) {
-                    console.log('WAITING SINCE SOMETHING FAILED', error);
+                    console.warn('\n SOMETHING FAILED .. mostly timeout issue. Don\'t worry, let it run. These things happen in life!! \n ');
                     await delay(5000);
                     continue;
                 }
@@ -201,7 +205,7 @@ async function createChannels () {
                 example: EXAMPLE,
                 image: `https://picsum.photos/seed/${i}/100/100`,
             })
-            console.log(`\n\n Created ${channelName} with id - ${channelId} \n`);
+            console.log(`\n\n Created channel "${channelName}" with id - "${channelId} "\n`);
             bar1.start(NUMBER_OF_MESSAGES_PER_CHANNEL, 0);
             for (let j = 1; j <= NUMBER_OF_MESSAGES_PER_CHANNEL; j++) {
                 let text = generateMessage(language);
