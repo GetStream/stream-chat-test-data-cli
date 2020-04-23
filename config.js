@@ -3,12 +3,22 @@ const config = {
     SECRET: '',
     /** Custom field for channels */
     EXAMPLE: 'test-data-0',
+    /**
+     * Custom field for channels
+     * 
+     * This is also used for generating channelId - `channel-ex-${EXAMPLE}-${i}`,
+     * where i is the for-loop index (0 to NUMBER_OF_GROUP_CHANNELS)
+     * 
+     * So as long as EXAMPLE and NUMBER_OF_GROUP_CHANNELS field doesn't change, we won't be creating any new channels
+     * for multiple iterations of create-channels script.
+     */
+    EXAMPLE: 'test-data-1',
 
     /**
     * Group channels will be created with these users (id) as members
     * First user of this list will be the creator of channel (since we are using server token for generating channels).
     * 
-    * If the users don't exsit, then `CREATE_USERS` as true, so that the script will create/generate these
+    * If the users don't exist, then set `CREATE_USERS` as true, so that the script will create/generate these
     * users first, before proceeding to channel creation.
     */
     USERS: ['vishal', 'tommaso', 'jaap'],
