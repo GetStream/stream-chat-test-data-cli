@@ -1,8 +1,7 @@
 const config = {
     API_KEY: '',
     SECRET: '',
-    /** Custom field for channels */
-    EXAMPLE: 'test-data-0',
+
     /**
      * Custom field for channels
      * 
@@ -12,7 +11,7 @@ const config = {
      * So as long as EXAMPLE and NUMBER_OF_GROUP_CHANNELS field doesn't change, we won't be creating any new channels
      * for multiple iterations of create-channels script.
      */
-    EXAMPLE: 'test-data-1',
+    EXAMPLE: 'test-data-0',
 
     /**
     * Group channels will be created with these users (id) as members
