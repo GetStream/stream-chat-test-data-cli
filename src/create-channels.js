@@ -9,7 +9,7 @@ const {config} = require(`../${program.config}`);
 
 const API_KEY = config.API_KEY;
 const SECRET = config.SECRET;
-
+const BASE_URL = config.BASE_URL;
 if (!API_KEY || !SECRET) {
     throw Error('Please add API_KEY and SECRET to config.js');
 }
@@ -60,6 +60,10 @@ const {generateName, generateMessage, getRandomInt} = require('./utils');
 
 const client = new StreamChat(API_KEY, SECRET, {});
 const users = USERS;
+
+if (BASE_URL) {
+    client.setBaseURL(BASE_URL);
+}
 
 createUsers()
 .then(r => {

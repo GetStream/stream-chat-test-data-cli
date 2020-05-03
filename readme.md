@@ -42,6 +42,8 @@ Following config options are available
 
 API_KEY: '',
 SECRET: '',
+/** If you wish to change the base url */
+// BASE_URL: 'http://localhost:3030'
 
 /**
  * Custom field for channels
