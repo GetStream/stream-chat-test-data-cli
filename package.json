@@ -13,10 +13,12 @@
     "add-member": "node ./src/add-member.js",
     "add-moderator": "node ./src/add-moderator.js",
     "remove-member": "node ./src/remove-member.js",
+    "delete-image": "node ./src/delete-image.js",
     "update-app-settings": "node ./src/update-app-settings.js"
   },
   "dependencies": {
     "cli-progress": "^3.4.0",
+    "commander": "^5.1.0",
     "stream-chat": "^"
   },
   "author": "",

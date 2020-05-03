@@ -1,6 +1,12 @@
 #!/usr/bin/env node
+const { program } = require('commander');
+program
+  .option('-c, --config <config>', 'Config file in root directory', 'config.js')
 
-const {config} = require('../config');
+program.parse(process.argv);
+
+const {config} = require(`../${program.config}`);
+
 const API_KEY = config.API_KEY;
 const SECRET = config.SECRET;
 
@@ -222,8 +228,7 @@ async function createChannels () {
                                 asset_url: `https://picsum.photos/seed/${randomSeed}/200/200`,
                             })
                         }
-                    } 
-                    if (j % 7 === 0) {
+                    } else if (j % 7 === 0) {
                         text = text + ' ' + urls[getRandomInt(1, urls.length + 1)];
                     }
 
@@ -256,17 +261,14 @@ async function createChannels () {
                             });
                         }
                     }
-
                     bar1.update(j);
                 } catch(e) {
-                    console.log('WAITING SINCE SEND MESSAGE FAILED', e);
                     await delay(5000);
                     continue;
                 }
             }
             bar1.stop();
             } catch (error) {
-                console.log('WAITING SINCE SOMETHING FAILED', error);
                 await delay(5000);
                 continue;
             }

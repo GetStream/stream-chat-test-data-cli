@@ -10,12 +10,13 @@ Jump to [Usage Section](#usage)
 ## Screenshots
 
 <div style="display: inline">
-<img src="./screenshots/1.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" style="margin-right: 30px" />
-<img src="./screenshots/2.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" style="margin-right: 30px" />
-<img src="./screenshots/3.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" />
+    <img src="./screenshots/1.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" style="margin-right: 30px" />
+    <img src="./screenshots/2.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" style="margin-right: 30px" />
+    <img src="./screenshots/3.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" />
 </div>
 
 ## Usage
+
 ```sh
 git clone git@github.com:GetStream/stream-chat-test-data-cli.git
 cd stream-chat-test-data-cli
@@ -25,6 +26,12 @@ cd stream-chat-test-data-cli
 
 yarn;
 yarn run create-channels
+```
+
+You can create multiple config files in root directory.
+
+```sh
+yarn run create-channels --config custom.config.js
 ```
 
 ## Configuration options
