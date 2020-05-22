@@ -21,13 +21,6 @@ channel.removeMembers(
         text: `${memberToBeRemoved} has been removed`,
         user_id: 'vishal'
     }).then(response => {
-        return channel.update(
-            {
-                name: 'Covert operation',
-            },
-            { text: memberToBeRemoved + " left the group chat", user_id: 'vishal' }
-        );
-    }).then(response => {
         console.log(response);
         process.exit();
 })
