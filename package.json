@@ -9,6 +9,7 @@
     "create-channels": "node ./src/create-channels.js",
     "update-channel": "node ./src/update-channel.js",
     "hide-channel": "node ./src/hide-channel.js",
+    "show-channel": "node ./src/show-channel.js",
     "delete-channel": "node ./src/delete-channel.js",
     "add-member": "node ./src/add-member.js",
     "add-moderator": "node ./src/add-moderator.js",
