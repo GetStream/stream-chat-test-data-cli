@@ -11,10 +11,11 @@ if (BASE_URL) {
 
 const [,, ...args] = process.argv;
 const channelId = args[0];
+const userId = args[1];
 
 const channel = client.channel('messaging', channelId);
 
-channel.hide('vishal').then(response => {
+channel.hide(userId).then(response => {
     console.log(response);
     process.exit();
 })
