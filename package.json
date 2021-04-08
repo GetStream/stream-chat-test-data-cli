@@ -1,0 +1,49 @@
+{
+  "name": "stream-chat-data-cli",
+  "version": "1.0.0",
+  "description": "cli tool to generate demo data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint '**/*.{js,md,ts}' --max-warnings 0 --ignore-path ./.eslintignore",
+    "eslint-fix": "npx eslint --fix '**/*.{js,md,ts}' --max-warnings 0 --ignore-path ./.eslintignore",
+    "prettier": "prettier --check '**/*.{js,ts,md,css,scss,json}' .eslintrc.json .prettierrc",
+    "prettier-fix": "npx prettier --write '**/*.{js,ts,md,css,scss,json}' .eslintrc.json .prettierrc",
+    "lint": "yarn run prettier && yarn run eslint",
+    "lint-fix": "yarn run prettier-fix && yarn run eslint-fix",
+    "build": "node bin/generate-doc.js && yarn run prettier-fix"
+  },
+  "bin": {
+    "playground": "bin/playground.js",
+    "create-channels": "bin/create-channels.js",
+    "reset-channels": "bin/create-channels.js",
+    "reset-all-channels": "bin/reset-all-channels.js",
+    "create-app-users": "bin/create-app-users.js",
+    "create-channel-members": "bin/create-channel-members.js",
+    "add-messages": "bin/add-messages.js",
+    "create-user": "bin/create-user.js",
+    "hide-channel": "bin/hide-channel.js",
+    "show-channel": "bin/show-channel.js",
+    "delete-channel": "bin/delete-channel.js",
+    "add-member": "bin/add-member.js",
+    "add-moderator": "bin/add-moderator.js",
+    "remove-member": "bin/remove-member.js",
+    "delete-image": "bin/delete-image.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cli-progress": "^3.4.0",
+    "commander": "^5.1.0",
+    "stream-chat": "^"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "7.18.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-markdown": "^1.0.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-sonarjs": "^0.5.0"
+  }
+}

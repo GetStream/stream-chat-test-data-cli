@@ -1,0 +1,5 @@
+/dist
+/node_modules
+/.vscode
+/types
+test/typescript/data.ts
