@@ -35,7 +35,7 @@
     "chalk": "^4.1.0",
     "cli-progress": "^3.4.0",
     "commander": "^5.1.0",
-    "stream-chat": "^"
+    "stream-chat": "^3.7.0"
   },
   "author": "",
   "license": "ISC",
