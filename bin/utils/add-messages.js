@@ -1,7 +1,7 @@
 const cliProgress = require('cli-progress');
 const { delay, generateMessage, getRandomInt } = require('./index');
 
-const addMessages = async (channel, config, excludeUser = '') => {
+const addMessages = async (channel, config, excludeUser = '', sentByUser = '') => {
   const bar1 = new cliProgress.SingleBar(
     {
       format: 'Sending messages [{bar}] {percentage}% | {value}/{total}',
@@ -17,8 +17,7 @@ const addMessages = async (channel, config, excludeUser = '') => {
       const text = getMessageText(j, config);
       const attachments = getAttachments(j, config);
 
-      const sentBy =
-        membersWithoutExcludeBy[getRandomInt(0, membersWithoutExcludeBy.length)];
+      const sentBy = sentByUser || membersWithoutExcludeBy[getRandomInt(0, membersWithoutExcludeBy.length)];
       const { message } = await channel.sendMessage({
         text,
         attachments,

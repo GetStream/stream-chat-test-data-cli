@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const { program } = require('commander');
+const fs = require('fs');
+
 const chalk = require('chalk');
 
 const { StreamChat } = require('stream-chat');
@@ -10,7 +12,14 @@ program.option('-u, --userId <userId>', 'user id from which channel needs to be 
 
 program.parse(process.argv);
 
-const { apiKey, secret, channelType, baseUrl } = require(`../${program.config}`);
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
+const { apiKey, secret, channelType, baseUrl } = config;
 const channelId = program.channelId;
 const userId = program.userId;
 

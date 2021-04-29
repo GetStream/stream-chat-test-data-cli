@@ -2,6 +2,8 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const { program } = require('commander');
+const fs = require('fs');
+
 const chalk = require('chalk');
 
 const { StreamChat } = require('stream-chat');
@@ -15,7 +17,13 @@ program.option('-c, --config <config>', 'Config file in root directory', 'dev.co
 program.option('-n, --number <number>', 'Number of users to generate', 0);
 
 program.parse(process.argv);
-const config = require(`../${program.config}`);
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
 const numberOfUsers = program.number;
 
 const client = new StreamChat(config.apiKey, config.secret);

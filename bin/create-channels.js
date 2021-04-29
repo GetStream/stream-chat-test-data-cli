@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const { program } = require('commander');
+const fs = require('fs');
+
 const chalk = require('chalk');
 
 const { StreamChat } = require('stream-chat');
@@ -19,7 +21,13 @@ program.description(`
 program.option('-c, --config <config>', 'Config file in root directory', 'dev.config.js');
 program.parse(process.argv);
 
-const config = require(`../${program.config}`);
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
 
 if (!config.apiKey || !config.secret) {
   throw Error('Please add API_KEY and SECRET to config.js');

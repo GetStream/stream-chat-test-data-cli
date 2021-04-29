@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const { program } = require('commander');
+const fs = require('fs');
+
 const chalk = require('chalk');
 const { capFirst } = require('./utils/index');
 const { StreamChat } = require('stream-chat');
@@ -16,14 +18,21 @@ program.parse(process.argv);
 
 const channelId = program.channelId;
 const newMember = program.userId;
+
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
 const {
   apiKey,
   secret,
   baseUrl,
   serverSideUser,
   channelType,
-} = require(`../${program.config}`);
-
+} = config;
 if (!apiKey || !secret) {
   throw Error('Please add API_KEY and SECRET to config.js');
 }

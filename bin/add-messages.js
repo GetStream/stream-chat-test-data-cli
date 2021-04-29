@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const { program } = require('commander');
+const fs = require('fs');
+
 const chalk = require('chalk');
 
 const { StreamChat } = require('stream-chat');
@@ -17,14 +19,21 @@ program.option(
   'Number of messages to add. By default `numberOfMessagesPerChannel` from your config file will be used',
 );
 program.option('-e, --excludeUser <number>', 'Number of messages to add');
+program.option('-u, --sentByUser <number>', 'Number of messages to add');
 
 program.parse(process.argv);
 
 const channelId = program.channelId;
-const config = require(`../${program.config}`);
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
 const channelType = config.channelType;
 const numberOfMessages = program.number || config.numberOfMessagesPerChannel;
-
+const sentByUser = program.sentByUser;
 const excludeUser = program.excludeUser;
 
 if (!config.apiKey || !config.secret) {
@@ -51,6 +60,7 @@ const run = async () => {
     channel,
     { ...config, numberOfMessagesPerChannel: numberOfMessages },
     excludeUser,
+    sentByUser,
   );
   console.log(chalk.green(`\n✓ Added ${numberOfMessages} messages!!`));
   process.exit();

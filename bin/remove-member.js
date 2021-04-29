@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const { program } = require('commander');
+const fs = require('fs');
+
 const chalk = require('chalk');
 
 const { StreamChat } = require('stream-chat');
@@ -11,13 +13,20 @@ program.option('-m, --userId <userId>', 'user id to be removed');
 
 program.parse(process.argv);
 
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
 const {
   apiKey,
   secret,
   baseUrl,
   channelType,
   serverSideUser,
-} = require(`../${program.config}`);
+} = config;
 const channelId = program.channelId;
 const memberToBeRemoved = program.userId;
 

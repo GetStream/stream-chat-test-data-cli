@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const { program } = require('commander');
+const fs = require('fs');
+
 const chalk = require('chalk');
 
 const https = require('https');
@@ -22,13 +24,21 @@ program.parse(process.argv);
 
 const channelId = program.channelId;
 const numberOfMembers = program.number;
+
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
 const {
   apiKey,
   baseUrl,
   channelType,
   secret,
   serverSideUser,
-} = require(`../${program.config}`);
+} = config;
 
 if (!apiKey || !secret) {
   throw Error('Please add API_KEY and SECRET to config.js');

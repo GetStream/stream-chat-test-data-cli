@@ -6,11 +6,7 @@ const fs = require('fs');
 const { StreamChat } = require('stream-chat');
 
 program.option('-c, --config <config>', 'Config file in root directory', 'dev.config.js');
-program.option(
-  '-i, --channelId <channelId>',
-  'Channel id from which image eneeds to be removed',
-);
-program.option('-u, --url <url>', 'Url of the image, to be deleted');
+program.option('-i, --id <id>', 'Id of user');
 
 program.parse(process.argv);
 
@@ -21,26 +17,23 @@ if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
   config = require(`${process.cwd()}/${program.config}`);
 }
 
-const channelType = config.channelType;
-const channelId = program.channelId;
-
-if (!config.apiKey || !config.secret) {
-  throw Error('Please add API_KEY and SECRET to config.js');
-}
+const userId = program.id;
 
 const client = new StreamChat(config.apiKey, config.secret, {
-  timeout: 20000,
+  logger: (type, msg, extra) => {
+    console.log(type, msg, extra)
+  }
 });
-
 if (config.baseUrl) {
   client.setBaseURL(config.baseUrl);
 }
 
-const url = program.url;
+const token = client.createToken(userId);
 
-const channel = client.channel(channelType, channelId);
-
-channel.deleteImage(url).then((response) => {
+client.deleteUser(userId, {
+  hard_delete: false,
+  mark_messages_deleted: false
+}).then((response) => {
   console.log(response);
   process.exit();
 });

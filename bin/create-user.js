@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const { program } = require('commander');
+const fs = require('fs');
+
 
 const { StreamChat } = require('stream-chat');
 const { getRandomInt } = require('./utils');
@@ -12,7 +14,13 @@ program.option('-s, --status <status>', 'Status for user');
 
 program.parse(process.argv);
 
-const config = require(`../${program.config}`);
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
 const userId = program.id;
 const userName = program.name;
 const role = program.role;

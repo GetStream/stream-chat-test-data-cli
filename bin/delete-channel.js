@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const { program } = require('commander');
+const fs = require('fs');
+
 const chalk = require('chalk');
 
 const { StreamChat } = require('stream-chat');
@@ -9,7 +11,13 @@ program.option('-i, --channelId <channelId>', 'Channel id that needs to be delet
 
 program.parse(process.argv);
 
-const config = require(`../${program.config}`);
+let config;
+if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
+  config = require(`../${program.config}`);
+} else {
+  config = require(`${process.cwd()}/${program.config}`);
+}
+
 const channelId = program.channelId;
 const channelType = config.channelType;
 
