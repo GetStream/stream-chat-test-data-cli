@@ -108,6 +108,11 @@ const createChannels = async () => {
   }
 };
 
+function ConsoleTableUser (id, token) {
+  this.STREAM_USER_ID = id;
+  this.STREAM_USER_TOKEN = token;
+}
+
 const createAppUsers = async () => {
   if (!config.createUsers) {
     return;
@@ -155,13 +160,12 @@ const createAppUsers = async () => {
   const response = await client.upsertUsers(usersToUpsert);
 
   console.log(chalk.cyanBright('\nCreated following users: \n'));
+  const table = [];
   usersToUpsert.forEach((u) => {
     const token = client.createToken(u.id);
-
-    console.log('User with token: ', token);
-    console.log(u);
-    console.log('\n');
+    table.push(new ConsoleTableUser(u.id, token))
   });
+  console.table(table)
 };
 
 const getChannelByMembers = async (members) => {

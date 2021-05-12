@@ -57,26 +57,30 @@ const addReactions = async (channel, message, messageIndex, config, excludeUser)
 };
 
 const addReplies = async (channel, message, messageIndex, config, excludeUser = '') => {
-  if (
-    config.threadReplyFrequency !== -1 &&
-    messageIndex % config.threadReplyFrequency === 0
-  ) {
-    const numberOfReplies = getRandomInt(1, 5);
-    const channelMembers = Object.keys(channel.state.members);
-    const membersWithoutExcludeBy = channelMembers.filter((m) => m !== excludeUser);
-
-    for (let l = 0; l < numberOfReplies; l++) {
-      const replyText = generateMessage(config.language);
-      const sentBy =
-        membersWithoutExcludeBy[getRandomInt(0, membersWithoutExcludeBy.length)];
-
-      await channel.sendMessage({
-        text: replyText,
-        parent_id: message.id,
-        user_id: sentBy,
-        show_in_channel: false,
-      });
+  try {
+    if (
+      config.threadReplyFrequency !== -1 &&
+      messageIndex % config.threadReplyFrequency === 0
+    ) {
+      const numberOfReplies = getRandomInt(1, 5);
+      const channelMembers = Object.keys(channel.state.members);
+      const membersWithoutExcludeBy = channelMembers.filter((m) => m !== excludeUser);
+  
+      for (let l = 0; l < numberOfReplies; l++) {
+        const replyText = generateMessage(config.language);
+        const sentBy =
+          membersWithoutExcludeBy[getRandomInt(0, membersWithoutExcludeBy.length)];
+  
+        await channel.sendMessage({
+          text: replyText,
+          parent_id: message.id,
+          user_id: sentBy,
+          show_in_channel: false,
+        });
+      }
     }
+  } catch (e) {
+    // If replies are not enabled, then skip it simply
   }
 };
 
