@@ -6,9 +6,9 @@ Testing is boring when you see messages like `asdasdassdas`, `kemdlwemkd`, `gegs
 This internal tool for Stream will generate a nice set of data (which is pleasant for eye of dev and tester), which contain reactions, attachments, enriched urls replies etc etc. Feel free to add comments in issues sections for improvement :)
 
 <div style="display: inline">
-    <img src="./screenshots/1.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" style="margin-right: 30px" />
-    <img src="./screenshots/2.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" style="margin-right: 30px" />
-    <img src="./screenshots/3.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" />
+    <img src="https://user-images.githubusercontent.com/11586388/117976310-ec0c5c80-b32f-11eb-9d62-c55a39456d2b.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" style="margin-right: 30px" />
+    <img src="https://user-images.githubusercontent.com/11586388/117976324-ee6eb680-b32f-11eb-8a52-89d05bb27591.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" style="margin-right: 30px" />
+    <img src="https://user-images.githubusercontent.com/11586388/117976332-ef9fe380-b32f-11eb-93ec-056eb3d2eb84.png" alt="IMAGE ALT TEXT HERE" width="260" border="1" />
 </div>
 
 ## 🔧 Setup
