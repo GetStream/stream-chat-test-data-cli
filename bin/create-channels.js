@@ -170,9 +170,9 @@ const createAppUsers = async () => {
 
 const getChannelByMembers = async (members) => {
   const channel = client.channel(config.channelType, {
+    ...(config.customProperties || {}),
     created_by_id: config.serverSideUser,
     members,
-    ...(config.customProperties || {}),
   });
 
   await channel.query();
@@ -192,11 +192,11 @@ const getChannelName = (channelIndex) =>
 const getChannelByID = async (channelId, channelName) => {
   const channelMembers = config.appUsers.map((u) => (typeof u === 'object' ? u.id : u));
   const channel = client.channel(config.channelType, channelId, {
+    ...(config.customProperties || {}),
     created_by_id: config.serverSideUser,
     members: channelMembers,
     name: channelName,
     image: `https://picsum.photos/seed/${getRandomInt(0, 100)}/100/100`,
-    ...(config.customProperties || {}),
   });
 
   await channel.query();
