@@ -1,4 +1,4 @@
-// DO NOT MODIGY THIS FILE DIRECTLY, SINCE IT DOES NOT GET USED.
+// DO NOT MODIFY THIS FILE DIRECTLY, SINCE IT DOES NOT GET USED.
 // MAKE A COPY OF IT WITH NAME - dev.config.js, which will get used by default
 module.exports = {
   apiKey: '',
