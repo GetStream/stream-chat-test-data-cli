@@ -80,7 +80,7 @@ Docs for all the commands is available here - https://github.com/GetStream/strea
 
 Following config options are available
 
-https://github.com/GetStream/stream-chat-test-data-cli/blob/master/config.js
+https://github.com/GetStream/stream-chat-test-data-cli/blob/master/config.js.template
 
 ## 📜 Reference guide
 
