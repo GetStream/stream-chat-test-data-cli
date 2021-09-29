@@ -10,7 +10,7 @@ module.exports = {
   /**
    * This user will be used to create/update stuff using server-side token.
    */
-  serverSideUser: '1f37e58d-d8b0-476a-a4f2-f8611e0d85d9', // jc
+  serverSideUser: 'jc',
 
   // ============================================================
   //
@@ -48,59 +48,59 @@ module.exports = {
    */
   appUsers: [
     {
-      id: '1f37e58d-d8b0-476a-a4f2-f8611e0d85d9',
-      name: 'Jc',
-      image: 'http://www.doppelme.com/E9E9E9/jc/crop.png',
+      id: 'jc',
+      name: 'Jc Minarro',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U011KEXDPB2-891dbb8df64f-128'
     },
     {
-      id: '6d95273b-33f0-40f5-b07c-0da261092074',
-      name: 'Carter',
-      image: 'http://www.doppelme.com/E9E9E9/carter/crop.png',
+      id: 'amit',
+      name: 'Amit Kumar',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U027L4AMGQ3-9ca65ea80b60-128'
     },
     {
-      id: '1e330111-670d-49a7-8f08-e6734338c641',
-      name: 'Dmitrii',
-      image: 'http://www.doppelme.com/E9E9E9/dmitrii/crop.png',
+      id: 'dmitrii',
+      name: 'Dmitrii Bychkov',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U01CDPY6YE8-b74b0739493e-128'
     },
     {
-      id: '29e46def-88f4-4b6a-a10c-584d10c4fdc9',
-      name: 'Leandro',
-      image: 'http://www.doppelme.com/E9E9E9/leandro/crop.png',
+      id: 'filip',
+      name: 'Filip Babic',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U022AFX9D2S-f7bcb3d56180-128'
     },
     {
-      id: '1f052c08-f682-4a83-896c-9f19a68bd2bb',
-      name: 'Marton',
-      image: 'http://www.doppelme.com/E9E9E9/marton/crop.png',
+      id: 'leandro',
+      name: 'Leandro Borges Ferreira',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U01AQ67NJ9Z-2f28d711cae9-128'
     },
     {
-      id: '0d3e6e63-6200-4dd1-a841-4050664891e2',
-      name: 'Oleg',
-      image: 'http://www.doppelme.com/E9E9E9/oleg/crop.png',
+      id: 'marton',
+      name: 'Marton Braun',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U018YPHEW7L-26ab96fd1ed3-128'
     },
     {
-      id: '12fb0ed9-93d8-48a5-9885-28e41f2e4c43',
-      name: 'Rafal',
-      image: 'http://www.doppelme.com/E9E9E9/rafal/crop.png',
+      id: 'oleg',
+      name: 'Oleg Kuzmin',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U019BEATNCD-bad2dcf654ef-128',
     },
     {
-      id: '5531a8cb-3b81-4a54-b424-7ae4e27bf8ba',
-      name: 'Samuel',
-      image: 'http://www.doppelme.com/E9E9E9/samuel/crop.png',
+      id: 'rafal',
+      name: 'Rafal Adasiewicz',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U0177N46AFN-a4e664d1960d-128'
     },
     {
-      id: '06356564-149f-4b2c-8525-d22056fec404',
-      name: 'Tommaso',
-      image: 'http://www.doppelme.com/E9E9E9/tommaso/crop.png',
+      id: 'samuel',
+      name: 'Samuel Urbanowicz',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U011KEXD396-6d3169b36889-128',
+    },
+        {
+      id: 'thierry',
+      name: 'Thierry Schellenbach',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U02RM6X6D-g28a1278a98e-128',
     },
     {
-      id: 'ad7d9314-5071-4d61-98a1-ffa643ce824a',
-      name: 'Thierry',
-      image: 'http://www.doppelme.com/E9E9E9/thierry/crop.png',
-    },
-    {
-      id: 'cebf562a-4806-4c64-a827-59d50aac42ba',
-      name: 'Zetra',
-      image: 'http://www.doppelme.com/E9E9E9/zetra/crop.png',
+      id: 'tommaso',
+      name: 'Tommaso Barbugli',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U02U7SJP4-0f65a5997877-128',
     },
     {
       id: 'qatest1',
