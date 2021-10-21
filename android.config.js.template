@@ -49,7 +49,7 @@ module.exports = {
   appUsers: [
     {
       id: 'jc',
-      name: 'Jc Minarro',
+      name: 'Jc Miñarro',
       image: 'https://ca.slack-edge.com/T02RM6X6B-U011KEXDPB2-891dbb8df64f-128'
     },
     {
@@ -58,14 +58,24 @@ module.exports = {
       image: 'https://ca.slack-edge.com/T02RM6X6B-U027L4AMGQ3-9ca65ea80b60-128'
     },
     {
+      id: 'belal',
+      name: 'Belal Khan',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U02DAP0G2AV-2072330222dc-128'
+    },
+    {
       id: 'dmitrii',
       name: 'Dmitrii Bychkov',
       image: 'https://ca.slack-edge.com/T02RM6X6B-U01CDPY6YE8-b74b0739493e-128'
     },
     {
       id: 'filip',
-      name: 'Filip Babic',
+      name: 'Filip Babić',
       image: 'https://ca.slack-edge.com/T02RM6X6B-U022AFX9D2S-f7bcb3d56180-128'
+    },
+    {
+      id: 'jaewoong',
+      name: 'Jaewoong Eum',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U02HU1XR9LM-626fb91c334e-128'
     },
     {
       id: 'leandro',
@@ -74,7 +84,7 @@ module.exports = {
     },
     {
       id: 'marton',
-      name: 'Marton Braun',
+      name: 'Márton Braun',
       image: 'https://ca.slack-edge.com/T02RM6X6B-U018YPHEW7L-26ab96fd1ed3-128'
     },
     {
