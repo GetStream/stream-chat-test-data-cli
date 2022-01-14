@@ -8,7 +8,7 @@ const chalk = require('chalk');
 const https = require('https');
 const { StreamChat } = require('stream-chat');
 
-const { getRandomInt } = require('./utils');
+const { getRandomInt } = require('./utils/getRandomInt');
 
 program.description(
   `Bulk of members will be generated and added to your channel. Please specify channelId and number of members to add.
@@ -32,13 +32,7 @@ if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
   config = require(`${process.cwd()}/${program.config}`);
 }
 
-const {
-  apiKey,
-  baseUrl,
-  channelType,
-  secret,
-  serverSideUser,
-} = config;
+const { apiKey, baseUrl, channelType, secret, serverSideUser } = config;
 
 if (!apiKey || !secret) {
   throw Error('Please add API_KEY and SECRET to config.js');

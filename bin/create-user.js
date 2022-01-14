@@ -2,9 +2,8 @@
 const { program } = require('commander');
 const fs = require('fs');
 
-
 const { StreamChat } = require('stream-chat');
-const { getRandomInt } = require('./utils');
+const { getRandomInt } = require('./utils/getRandomInt');
 
 program.option('-c, --config <config>', 'Config file in root directory', 'dev.config.js');
 program.option('-i, --id <id>', 'Id of user');

@@ -112,38 +112,101 @@ module.exports = {
   channelNames: [
     /** stream_chat, amsterdam_office */
   ],
-
-  numberOfMessagesPerChannel: 300,
-
+  /** Truncates the channel, if it already exists, before adding messages. */
+  truncateBeforeAddingNewMessages: true,
+  messageConfig: {
+    minDelay: 100,
+    maxDelay: 5000,
+    /** Number of messages per channel */
+    numberOfMessagesPerChannel: 2,
+    /** Messages will contain following urls once in a while - as per configured `urlFrequency` */
+    urlFrequency: 30,
+    urls: [
+      'https://www.youtube.com/watch?v=ceGLEhahLKQ',
+      'https://reactnative.dev/',
+      'https://shorturl.at/hmyKM',
+      'https://www.youtube.com/watch?v=3oGLuM_--Uo&t=13s',
+      'https://shorturl.at/mBUY7',
+      'https://github.com/GetStream/slack-clone-react-native/',
+      'https://www.youtube.com/watch?v=tQ7T530Q7aU',
+    ],
+  },
   // ============================================================
   //
   //  CONFIG USED FOR `create-channels` and `add-messages` command
   //
   // ============================================================
-
-  // So number of attachments will vary between 1 and MAX_NUMBER_OF_ATTACHMENTS_PER_MESSAGE
-  maxNumberOfAttachmentsPerMessage: 6,
-  // Frequency x => 1 in every x number of messages will contain the given entity.
-  attachmentFrequency: 10,
-  urlFrequency: 7,
-  reactionFrequency: 4,
-  threadReplyFrequency: 9,
-
-  /** Truncates the channel, if it already exists, before adding messages. */
-  truncateBeforeAddingNewMessages: true,
-
-  // ALlowed reactions
-  reactions: ['like', 'love', 'haha', 'wow', 'sad'],
-  // Messages will contain following urls once in a while - as per configured `urlFrequency`
-  urls: [
-    'https://www.youtube.com/watch?v=ceGLEhahLKQ',
-    'https://reactnative.dev/',
-    'https://shorturl.at/hmyKM',
-    'https://www.youtube.com/watch?v=3oGLuM_--Uo&t=13s',
-    'https://shorturl.at/mBUY7',
-    'https://github.com/GetStream/slack-clone-react-native/',
-    'https://www.youtube.com/watch?v=tQ7T530Q7aU',
-  ],
+  attachmentConfig: {
+    frequency: 'random', // or some number
+    types: ['giphy', 'video', 'image', 'file'],
+    attachments: [
+      {
+        type: "image",
+        image_url: "https://us-east.stream-io-cdn.com/62344/images/4beda2b8-be5d-4ab8-a37c-cb87e098fc45.001?Key-Pair-Id=APKAIHG36VEWPDULE23Q&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy1lYXN0LnN0cmVhbS1pby1jZG4uY29tLzYyMzQ0L2ltYWdlcy80YmVkYTJiOC1iZTVkLTRhYjgtYTM3Yy1jYjg3ZTA5OGZjNDUuMDAxP2Nyb3A9KiZoPSomcmVzaXplPSomcm89MCZ3PSoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzM2MTQ3NzV9fX1dfQ__&Signature=eqityX1lkqbC-IVf0BRlkuVNQOpNTD4T9A0xoPeXkwKG1aXjGW0xZKksXZWSGBFFc6ew5tKhuaarzTD0nSnw-~4uGOTZYAZIFcJKxNZo-AIcuIyF-7qn4qG~AOBL49UoQ4Q5sLOxNSsbz4F~P2K-kg3Vz59kjr2tXvb3KfoFYQDciSciP414xzlcqsdiq8~HlsyYgIEvCBcdlgGygqb8a73DqmHQRi0Q0P1Cgs5IFqAAd9r9kHaSyvGhoePfrkkHPGSci4cSZWYhYtuW5OuLEmc27Qj1D4ArkM~grgDCZfNjtltXKysXVMEK46vDZrSKfDFePbOGGddy6MWCf7WulA__&crop=*&h=400&resize=*&ro=0&w=400"
+      },
+      {
+        type: "image",
+        image_url: "https://us-east.stream-io-cdn.com/62344/images/fe7a8b8b-aeb6-4752-92f7-ddf2aaaa28b8.001?Key-Pair-Id=APKAIHG36VEWPDULE23Q&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy1lYXN0LnN0cmVhbS1pby1jZG4uY29tLzYyMzQ0L2ltYWdlcy9mZTdhOGI4Yi1hZWI2LTQ3NTItOTJmNy1kZGYyYWFhYTI4YjguMDAxP2Nyb3A9KiZoPSomcmVzaXplPSomcm89MCZ3PSoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzM2MTQ3NzV9fX1dfQ__&Signature=O3j8hFrT7nnq43eWVi2ptzuNBN3pl1DXzZMMZ4oU0XE~MarKlYCIp4Bk2F9vbRTZVdQgVgClbFyC3EwhwpZ-Kjz4EI4~jM9Ns0gb1yb91Lg-XmDxiY~tByESf6gQbFcmdZADcP6FgnEGGhj9RjrlyPfQQNP63zthqroYW-9sqK6-pxYpEKaFFuHUpQnQkAGvy2zCl9BAL19g-xKPDN1jXKJ207CuqCgmn6Ppn83uT351YN6NpqbUl6XmclaXoc7lUTzwNAFVeS32xVy1dT8LUvLV4pK~f1cgXD9wL~clyeQXCqgjhkQ63HeAdlBNFPX5GHBWN9JXDyvs4r3vgR43eg__&crop=*&h=400&resize=*&ro=0&w=400"
+      },
+      {
+        type: "image",
+        image_url: "https://us-east.stream-io-cdn.com/62344/images/b433445b-31d8-48f6-bb88-5fe158fdb3c2.001?Key-Pair-Id=APKAIHG36VEWPDULE23Q&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy1lYXN0LnN0cmVhbS1pby1jZG4uY29tLzYyMzQ0L2ltYWdlcy9iNDMzNDQ1Yi0zMWQ4LTQ4ZjYtYmI4OC01ZmUxNThmZGIzYzIuMDAxP2Nyb3A9KiZoPSomcmVzaXplPSomcm89MCZ3PSoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzM2MTQ3NzV9fX1dfQ__&Signature=EeEyHN6Kw48Y-JCpeI0RCpRlGfqIIW149PcnkKP86nTRg6gG4A5IZDW5IVQNl4t9fppcz6sqbyOt16jkgXlRV4E96gLbDZZQaZOpPb7-un3zwGmYWhqmPitSVwEHq2GHlIkMqjvjhUM~ctHmoCyLR8m4DBC9bC-mmb949u-64ZYI4hkId~e6J4q3GbzTN6CUg4ow8KW82bZSqeNcTeUJ9CEI72tEhIJN7c7GqO6~hVhlJPRXKA5n3-Tbv2bLpuQR0CWVL0DZyc~YXoOQP2TqxHMJbHpwlZvhvQrtDeX9-Ya3Dd-Va50P8~xHNdYi06XdH7nMx5e-N9e-F3rvXmYR~w__&crop=*&h=400&resize=*&ro=0&w=400"
+      },
+      {
+        type: "image",
+        image_url: "https://us-east.stream-io-cdn.com/62344/images/a26479fe-9129-45d1-963b-6c1a46914a24.001?Key-Pair-Id=APKAIHG36VEWPDULE23Q&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy1lYXN0LnN0cmVhbS1pby1jZG4uY29tLzYyMzQ0L2ltYWdlcy9hMjY0NzlmZS05MTI5LTQ1ZDEtOTYzYi02YzFhNDY5MTRhMjQuMDAxP2Nyb3A9KiZoPSomcmVzaXplPSomcm89MCZ3PSoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzM2MTQ3NzV9fX1dfQ__&Signature=EySBcTuNYQvT9dxyRfB8WVlvfeFZD-eQhA6gsA1eQpW-wF3Qb1nS4Mmmhbh105mdi~Zhd~8D9~iNDSoaFC2rVN5rSjGWKfzDsr3UkjtIRHkKXhyonfq8TmhudrLMPgPBA3cmKYM1dIdUwNBJOwRn1Tb68Fg5XIM5ugGYnHG2kx9jA3qtcbcedhH5PcX-XJLwatXttO~st9b5K5ncpd5F3LHsqpE1QCh4YE5RmKSOuC4yzFVyNqoVQbYH7YQcFu5LQUJzHVRSzvcC8n-ygztfHGJpwZccW~KxlABEyB82fCJZmAo6ND8MvFcaxJcFW14CpYQgSyQOEv7Sbv4mFxFWFw__&crop=*&h=400&resize=*&ro=0&w=400"
+      },
+      {
+        type: "image",
+        image_url: "https://us-east.stream-io-cdn.com/62344/images/7adf9c91-2c63-46ff-a5e4-db6d94562a51.001?Key-Pair-Id=APKAIHG36VEWPDULE23Q&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy1lYXN0LnN0cmVhbS1pby1jZG4uY29tLzYyMzQ0L2ltYWdlcy83YWRmOWM5MS0yYzYzLTQ2ZmYtYTVlNC1kYjZkOTQ1NjJhNTEuMDAxP2Nyb3A9KiZoPSomcmVzaXplPSomcm89MCZ3PSoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzM2MTQ3NzV9fX1dfQ__&Signature=aIC-YBfs~uOyOYphyUDhrywSa~LcZfx0i7WIVaJp29VFCEnG-a5U4pOy8ehne7oPCLZ8upMc3NIqCo1uyEEUF10oKMmKW~HKVGyjvB88MjkNqZPrOrIihRtZQ91EIVcKRryC954y~HSFf0bPfTTkQCyj0gRKd8EBCvLp8hdU8yiIv2MbtInTrjEYGKLVsvgJbHjXpi8ahatKuDAS3GBLQ4hJwujn1jWjLoNbQMJZIDmnZNg5qWRw3WRjMDKY8OH4S8dmt2c4NwhkytNNscVh6725TE8TmvZJIYtFHKbbd80gZtdZQbyULTKrXTyiChsO~vJYzr0AZv1izI6hKHHLtg__&crop=*&h=400&resize=*&ro=0&w=400"
+      },
+      {
+        type: "image",
+        image_url: "https://us-east.stream-io-cdn.com/62344/images/beb903cc-2b26-4eb8-9147-f25af9d251d5.001?Key-Pair-Id=APKAIHG36VEWPDULE23Q&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy1lYXN0LnN0cmVhbS1pby1jZG4uY29tLzYyMzQ0L2ltYWdlcy9iZWI5MDNjYy0yYjI2LTRlYjgtOTE0Ny1mMjVhZjlkMjUxZDUuMDAxP2Nyb3A9KiZoPSomcmVzaXplPSomcm89MCZ3PSoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzM2MTQ3NzV9fX1dfQ__&Signature=cXQB6eiazoiDEmQRG94k1jP5suEsEWWyGaeyaNCNCV8Tt4fT~lQmFot2JIJ43YVdN97WqIc~4t2LrUKtI14~p8ChqcUKO5~2VOE5AtFXN1lqFljvFKFQse8BrayE-y~njqfDXQIbw3HXdxoVY5awedySJO-8mF4sgyEZzpv4cZSp6ppiYenI7kr-5PwCNZV1NmI-UfdNcA3TYojfpcDO56GxLTNxa3Q6-tM4nsCeFVA1Xp-3E-ogeNbAvNStzIIn1UTzYpXZNcJ5bNHwArTptlD7nLGh8qYajq8hWKL1u1clYVmFlc1~j6UG8Pk0HbbgQQR0RJpKGnH4v9P-txXKxg__&crop=*&h=400&resize=*&ro=0&w=400"
+      },
+      {
+        type: "giphy",
+        thumb_url: "https://media4.giphy.com/media/fbBNEQbLQdXKU/giphy.gif?cid=c4b036756c80o2sf5n0hglr12dbn9lp01i0najwdjb4eb11g&rid=giphy.gif&ct=g",
+        title: "haha",
+        title_link: "https://giphy.com/gifs/fbBNEQbLQdXKU",
+      },
+      {
+        type: "giphy",
+        thumb_url: "https://media.giphy.com/media/xUNd9ZPhdIcCKQxmzS/giphy.gif",
+        title: "greenwave",
+        title_link: "https://giphy.com/gifs/fbBNEQbLQdXKU",
+      },
+      {
+        type: 'file',
+        asset_url: 'https://picsum.photos/seed/90/200/200',
+        title: 'file.pdf',
+        file_size: 10000,
+      },
+      {
+        type: 'file',
+        asset_url: 'https://picsum.photos/seed/90/200/200',
+        title: 'file1.pdf',
+        file_size: 7800,
+      },
+      {
+        type: 'video',
+        asset_url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+        title: 'Video File.pdf',
+      },
+    ],
+  },
+  reactionConfig: {
+    frequency: 2,
+    // ALlowed reactions
+    reactions: ['love', 'like', 'sad', 'haha', 'wow'],
+    maxDelay: 10000, // max delay in adding reaction to message after message is created.
+    minDelay: 3000
+  },
+  threadReplyConfig: {
+    frequency: 2,
+    maxDelay: 10000,
+    minDelay: 4000,
+  },
 
   // Don't change this. We do have support to add messages in various languages,
   // but it needs to be tested after latest changes.

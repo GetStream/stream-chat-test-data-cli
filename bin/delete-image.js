@@ -2,7 +2,6 @@
 const { program } = require('commander');
 const fs = require('fs');
 
-
 const { StreamChat } = require('stream-chat');
 
 program.option('-c, --config <config>', 'Config file in root directory', 'dev.config.js');

@@ -5,8 +5,10 @@ const fs = require('fs');
 const chalk = require('chalk');
 
 const { StreamChat } = require('stream-chat');
-const { delay, generateName, generateMessage, getRandomInt } = require('./utils');
+const { delay, generateName, generateMessage } = require('./utils');
 const { addMessages } = require('./utils/add-messages');
+const { getRandomInt } = require('./utils/getRandomInt');
+const cliProgress = require('cli-progress');
 
 program.description(`
   Creates channels in bulk amount. Channels are created using id prefix (channelIdPrefix) mentioned in config.
@@ -28,7 +30,6 @@ if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
   config = require(`${process.cwd()}/${program.config}`);
 }
 
-
 if (!config.apiKey || !config.secret) {
   throw Error('Please add API_KEY and SECRET to config.js');
 }
@@ -46,6 +47,16 @@ const createOneOnOneConversations = async () => {
   if (!config.createOneToOneConversations) {
     return;
   }
+
+  // create new container
+  const multibar = new cliProgress.MultiBar(
+    {
+      clearOnComplete: false,
+      hideCursor: true,
+    },
+    cliProgress.Presets.shades_grey,
+  );
+
   const appUsers = config.appUsers.map((u) => (typeof u === 'object' ? u.id : u));
   for (let i = 0; i < appUsers.length; i++) {
     for (let s = 0; s < appUsers.length; s++) {
@@ -57,7 +68,7 @@ const createOneOnOneConversations = async () => {
           `\n\n Created channel with members - ${appUsers[i]} and ${appUsers[s]} \n`,
         );
 
-        await addMessages(channel, config);
+        await addMessages({ channel, config, multibar });
       } catch (error) {
         console.warn(
           "\n SOMETHING FAILED .. mostly timeout issue. Don't worry, let it run. These things happen in life!! \n ",
@@ -67,9 +78,18 @@ const createOneOnOneConversations = async () => {
       }
     }
   }
+  multibar.stop();
 };
 
 const createChannels = async () => {
+  const multibar = new cliProgress.MultiBar(
+    {
+      clearOnComplete: false,
+      hideCursor: true,
+    },
+    cliProgress.Presets.shades_grey,
+  );
+
   for (let i = 0; i < config.numberOfGroupChannel; i++) {
     try {
       const channelId = `${config.channelIdPrefix || 'default'}-channel-${i}`;
@@ -95,7 +115,11 @@ const createChannels = async () => {
         });
       }
 
-      await addMessages(channel, config);
+      await addMessages({
+        channel,
+        config,
+        multibar,
+      });
     } catch (error) {
       console.warn(error);
       console.warn(
@@ -106,9 +130,10 @@ const createChannels = async () => {
       continue;
     }
   }
+  multibar.stop();
 };
 
-function ConsoleTableUser (id, token) {
+function ConsoleTableUser(id, token) {
   this.STREAM_USER_ID = id;
   this.STREAM_USER_TOKEN = token;
 }
@@ -163,9 +188,9 @@ const createAppUsers = async () => {
   const table = [];
   usersToUpsert.forEach((u) => {
     const token = client.createToken(u.id);
-    table.push(new ConsoleTableUser(u.id, token))
+    table.push(new ConsoleTableUser(u.id, token));
   });
-  console.table(table)
+  console.table(table);
 };
 
 const getChannelByMembers = async (members) => {

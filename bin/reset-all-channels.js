@@ -6,7 +6,9 @@ const fs = require('fs');
 const { StreamChat } = require('stream-chat');
 const chalk = require('chalk');
 const { addMessages } = require('./utils/add-messages');
-const { delay, getInput, getRandomInt } = require('./utils');
+const { delay, getInput } = require('./utils');
+const { getRandomInt } = require('./utils/getRandomInt');
+const cliProgress = require('cli-progress');
 
 program.description(
   'This script will loop over all the channels that exist on your app, and will reset the messages on them\n' +
@@ -23,7 +25,6 @@ if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
 } else {
   config = require(`${process.cwd()}/${program.config}`);
 }
-
 
 const client = new StreamChat(config.apiKey, config.secret);
 if (config.baseUrl) {
@@ -99,6 +100,16 @@ const run = async () => {
   await createAppUsers();
 
   console.log(chalk.cyanBright('\nStep 3: Lets reset messages on these channels now\n'));
+
+  // create new container
+  const multibar = new cliProgress.MultiBar(
+    {
+      clearOnComplete: false,
+      hideCursor: true,
+    },
+    cliProgress.Presets.shades_grey,
+  );
+
   for (let i = 0; i < allChannels.length; i++) {
     const channel = client.channel(config.channelType, allChannels[i]);
 
@@ -128,10 +139,10 @@ const run = async () => {
 
     console.log(chalk.magentaBright('Channel - ', channel.id));
 
-    await addMessages(channel, config);
+    await addMessages({ channel, config, multibar });
     console.log('\n');
   }
-
+  multibar.stop();
   console.log(chalk.green('✓ We are done :) '));
 };
 

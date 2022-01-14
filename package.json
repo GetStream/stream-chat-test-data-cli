@@ -23,6 +23,8 @@
     "add-messages": "bin/add-messages.js",
     "create-user": "bin/create-user.js",
     "hide-channel": "bin/hide-channel.js",
+    "freeze-channel": "bin/freeze-channel.js",
+    "unfreeze-channel": "bin/unfreeze-channel.js",
     "show-channel": "bin/show-channel.js",
     "delete-channel": "bin/delete-channel.js",
     "delete-user": "bin/delete-user.js",

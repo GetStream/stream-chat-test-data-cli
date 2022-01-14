@@ -26,13 +26,7 @@ if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
   config = require(`${process.cwd()}/${program.config}`);
 }
 
-const {
-  apiKey,
-  secret,
-  baseUrl,
-  serverSideUser,
-  channelType,
-} = config;
+const { apiKey, secret, baseUrl, serverSideUser, channelType } = config;
 if (!apiKey || !secret) {
   throw Error('Please add API_KEY and SECRET to config.js');
 }

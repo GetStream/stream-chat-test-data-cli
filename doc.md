@@ -122,7 +122,11 @@ so no message will be added from this user. And thus final unread count of chann
   -n, --number <number>        Number of messages to add. By default
                                `numberOfMessagesPerChannel` from your config
                                file will be used
-  -e, --excludeUser <number>   Number of messages to add
+  -r, --randomUsers <number>   Number of random users to send messages from
+  -m, --membersOnly <boolean>  Messages will be sent only from members of
+                               channel
+  -e, --excludeUser <string>   Messages won't be added from use with this id
+  -u, --sentByUser <string>    Messages will be sent by user with this id
 ```
 
 ---

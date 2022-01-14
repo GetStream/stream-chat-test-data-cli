@@ -8,7 +8,7 @@ const chalk = require('chalk');
 
 const { StreamChat } = require('stream-chat');
 const https = require('https');
-const { getRandomInt } = require('./utils');
+const { getRandomInt } = require('./utils/getRandomInt');
 
 program.description(
   `Adds bulk of users will be generated and added to your app. Please specify number of users to generate.`,

@@ -1,4 +1,5 @@
 const readline = require('readline');
+const { getRandomInt } = require('./getRandomInt');
 
 module.exports = {
   getInput,
@@ -6,7 +7,6 @@ module.exports = {
   delay,
   generateName,
   generateMessage,
-  getRandomInt,
 };
 
 function getInput(question) {
@@ -28,10 +28,6 @@ function getInput(question) {
 
 function capFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function delay(t) {

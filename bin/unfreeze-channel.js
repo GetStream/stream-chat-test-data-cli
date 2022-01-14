@@ -8,12 +8,12 @@ const { StreamChat } = require('stream-chat');
 
 program.option('-c, --config <config>', 'Config file in root directory', 'dev.config.js');
 program.option('-i, --channelId <channelId>', 'Channel id');
-program.option('-m, --moderatorId <moderatorId>', 'user id to be made moderator');
+program.option(
+  '-u, --userId <userId>',
+  'user id from which channel needs to be un-hidden',
+);
 
 program.parse(process.argv);
-
-const channelId = program.channelId;
-const moderator = program.moderatorId;
 
 let config;
 if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
@@ -22,10 +22,18 @@ if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
   config = require(`${process.cwd()}/${program.config}`);
 }
 
-const { apiKey, baseUrl, channelType, secret, serverSideUser } = config;
+const { apiKey, secret, baseUrl, channelType } = config;
+const channelId = program.channelId;
+const userId = program.userId;
 
 if (!apiKey || !secret) {
-  throw Error('Please add API_KEY and SECRET to config.js');
+  console.log('Please add API_KEY and SECRET to config.js');
+  process.exit(0);
+}
+
+if (!channelId) {
+  console.log(chalk.bgRed('Please provide channelId. Use --help for all available args'));
+  process.exit(0);
 }
 
 const client = new StreamChat(apiKey, secret, {
@@ -38,14 +46,7 @@ if (baseUrl) {
 
 const channel = client.channel(channelType, channelId);
 
-const run = async () => {
-  await channel.addModerators([moderator], {
-    text: `${moderator} is now moderator!`,
-    user_id: serverSideUser,
-  });
-
-  console.log(chalk.green(`\n✓ Added "${moderator}" as moderator`));
+channel.update({ frozen: false }).then((response) => {
+  console.log(chalk.bgGreen(`\n✓ Channel "${channelId}" has been unfrozen!\n`));
   process.exit();
-};
-
-run();
+});

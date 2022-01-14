@@ -20,13 +20,7 @@ if (!fs.existsSync(`${process.cwd()}/${program.config}`)) {
   config = require(`${process.cwd()}/${program.config}`);
 }
 
-const {
-  apiKey,
-  secret,
-  baseUrl,
-  channelType,
-  serverSideUser,
-} = config;
+const { apiKey, secret, baseUrl, channelType, serverSideUser } = config;
 const channelId = program.channelId;
 const memberToBeRemoved = program.userId;
 
