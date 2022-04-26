@@ -3,7 +3,7 @@
 module.exports = {
   apiKey: '',
   secret: '',
-  baseUrl: 'https://chat-us-east-staging.stream-io-api.com',
+  baseUrl: 'https://chat.stream-io-api.com',
 
   channelType: 'messaging',
 
@@ -78,19 +78,19 @@ module.exports = {
       image: 'https://ca.slack-edge.com/T02RM6X6B-U02HU1XR9LM-626fb91c334e-128'
     },
     {
+      id: 'kanat',
+      name: 'Kanat Kiialbaev',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U034NG4FPNG-688fab30cc42-128'
+    },
+    {
       id: 'leandro',
       name: 'Leandro Borges Ferreira',
       image: 'https://ca.slack-edge.com/T02RM6X6B-U01AQ67NJ9Z-2f28d711cae9-128'
     },
     {
-      id: 'marton',
-      name: 'Márton Braun',
-      image: 'https://ca.slack-edge.com/T02RM6X6B-U018YPHEW7L-26ab96fd1ed3-128'
-    },
-    {
-      id: 'oleg',
-      name: 'Oleg Kuzmin',
-      image: 'https://ca.slack-edge.com/T02RM6X6B-U019BEATNCD-bad2dcf654ef-128',
+      id: 'marin',
+      name: 'Marin Tolić',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U02N2HTP79A-645f7845aa22-128'
     },
     {
       id: 'rafal',
@@ -98,11 +98,11 @@ module.exports = {
       image: 'https://ca.slack-edge.com/T02RM6X6B-U0177N46AFN-a4e664d1960d-128'
     },
     {
-      id: 'samuel',
-      name: 'Samuel Urbanowicz',
-      image: 'https://ca.slack-edge.com/T02RM6X6B-U011KEXD396-6d3169b36889-128',
+      id: 'tomislav',
+      name: 'Tomislav Gazica',
+      image: 'https://ca.slack-edge.com/T02RM6X6B-U036AL9LV3Q-aabe5318d2aa-128'
     },
-        {
+    {
       id: 'thierry',
       name: 'Thierry Schellenbach',
       image: 'https://ca.slack-edge.com/T02RM6X6B-U02RM6X6D-g28a1278a98e-128',
