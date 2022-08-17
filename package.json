@@ -34,8 +34,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "cli-progress": "^3.4.0",
-    "commander": "^5.1.0",
-    "stream-chat": "^3.7.0"
+    "commander": "^5.1.0"
   },
   "author": "",
   "license": "ISC",
@@ -46,5 +45,8 @@
     "eslint-plugin-markdown": "^1.0.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-sonarjs": "^0.5.0"
+  },
+  "peerDependencies": {
+    "stream-chat": ">=6.8.0"
   }
 }
