@@ -24,6 +24,9 @@ cd stream-chat-test-data-cli
 
 # Install the dependencies and link the repo
 yarn; yarn link;
+
+# Install stream chat
+yarn add stream-chat
 ```
 
 2. Create config file.
@@ -71,6 +74,12 @@ You can create multiple config files in root directory.
 ```sh
 create-channels --config custom.config.js
 ```
+
+## Troubleshooting
+`Error: getaddrinfo ENOTFOUND chat-us-east-staging.stream-io-api.com`
+![image](https://user-images.githubusercontent.com/33436839/220097371-bdbe6510-739a-45f3-9ab9-91c26f904eb8.png)
+
+Comment out the `baseUrl` in the config file
 
 ## 📚 Command docs
 
