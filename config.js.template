@@ -1,9 +1,9 @@
 // DO NOT MODIFY THIS FILE DIRECTLY, SINCE IT DOES NOT GET USED.
 // MAKE A COPY OF IT WITH NAME - dev.config.js, which will get used by default
 module.exports = {
-  apiKey: '',
-  secret: '',
-  baseUrl: 'https://chat-us-east-staging.stream-io-api.com',
+  apiKey: '892s22ypvt6m',
+  secret: '5cssrefv55rs3cnkk38kfjam2k7c2ykwn4h79dqh66ym89gm65cxy4h9jx4cypd6',
+  baseUrl: 'http://127.0.0.1:3030',
 
   channelType: 'messaging',
 
@@ -92,9 +92,9 @@ module.exports = {
   createUsers: true,
 
   /** Total number of group channels to create */
-  numberOfGroupChannel: 20,
+  numberOfGroupChannel: 1,
   /** If true, script will also create one-to-one conversation between all users. */
-  createOneToOneConversations: true,
+  createOneToOneConversations: false,
   /**
    * Channel names will be some random combination of adjective and verb.
    * but if you want to have your own channel names then specify then here.
@@ -105,7 +105,7 @@ module.exports = {
     /** stream_chat, amsterdam_office */
   ],
 
-  numberOfMessagesPerChannel: 300,
+  numberOfMessagesPerChannel: 1000,
 
   // ============================================================
   //
@@ -114,9 +114,9 @@ module.exports = {
   // ============================================================
 
   // So number of attachments will vary between 1 and MAX_NUMBER_OF_ATTACHMENTS_PER_MESSAGE
-  maxNumberOfAttachmentsPerMessage: 6,
+  maxNumberOfAttachmentsPerMessage: 1,
   // Frequency x => 1 in every x number of messages will contain the given entity.
-  attachmentFrequency: 10,
+  attachmentFrequency: 1,
   urlFrequency: 7,
   reactionFrequency: 4,
   threadReplyFrequency: 9,

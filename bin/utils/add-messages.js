@@ -97,12 +97,18 @@ const getAttachments = (messageIndex, config) => {
     config.maxNumberOfAttachmentsPerMessage + 1,
   );
 
+  const sampleUrls = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxUvZtUHHurQ905SK07sDz-OdQja2z-iSewcki24Ww3z2KB_YYopx7_mUrxz2nIIP6_B0&usqp=CAU',
+    'https://d24edro6ichpbm.thehive.ai/demo_static_media/moderation/nsfw_5.jpg',
+    'https://media.timeout.com/images/105795964/750/422/image.jpg'
+  ]
+
   for (let k = 0; k < numberOfAttachments; k++) {
-    const randomSeed = getRandomInt(1, 100);
+    const randomSeed = getRandomInt(1, 3);
     attachments.push({
       type: 'image',
-      thumb_url: `https://picsum.photos/seed/${randomSeed}/200/200`,
-      asset_url: `https://picsum.photos/seed/${randomSeed}/200/200`,
+      image_url: sampleUrls[randomSeed],
+      asset_url: sampleUrls[randomSeed],
     });
   }
 
